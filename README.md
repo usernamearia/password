@@ -4,7 +4,7 @@ A simple yet powerful password generator built in Python. This tool allows you t
 
 ---
 
-## Features
+## 🌟 Features
 
 - **Customizable Password Length**: Specify the length of the password.
 - **Include Numbers**: Option to include or exclude numbers in the password.
@@ -15,7 +15,7 @@ A simple yet powerful password generator built in Python. This tool allows you t
 
 ---
 
-## Installation
+## 🚀 Installation
 
 1. **Clone the repository**:
    ```bash
@@ -29,17 +29,17 @@ A simple yet powerful password generator built in Python. This tool allows you t
 
 ---
 
-## Usage
+## 🚀 Usage
 
-1. **Run the script using the command**:
+1. **Run the script using the command.**:
    ```bash
    python password.py
    ```
 2. **Follow the prompts**
-3. **The generated password will be displayed in the terminal and automatically copied to your clipboard**
+3. **The generated password will be displayed in the terminal and automatically copied to your clipboard.**
 
 ---
 
-## Liscense
+## 📄 License
 
-**This project is licensed under the MIT License. See the LICENSE file for details**
+This project is licensed under the **MIT License**. Feel free to use and modify it as you like!
