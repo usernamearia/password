@@ -2,6 +2,8 @@
 
 A simple yet powerful password generator built in Python. This tool allows you to generate secure, customizable passwords with options to include numbers, symbols, and specify the length of the password. The generated password can also be copied to your clipboard for convenience.
 
+https://github.com/user-attachments/assets/a8d6f7f4-43ac-4c37-9de8-d7291a5f96b5
+
 ---
 
 ## 🌟 Features
