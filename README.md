@@ -1,4 +1,4 @@
-# Password Generator
+# 🔑 Password Generator
 
 A simple yet powerful password generator built in Python. This tool allows you to generate secure, customizable passwords with options to include numbers, symbols, and specify the length of the password. The generated password can also be copied to your clipboard for convenience.
 
