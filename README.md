@@ -26,7 +26,10 @@ A simple yet powerful password generator built in Python. This tool allows you t
    ```bash
    pip install pyfiglet colorama pyperclip
    ```
-
+3. **Troubles downloading dependencies on MacOS?**
+   ```bash
+   python3 -m pip install --break-system-packages pyfiglet colorama pyperclip
+   ```
 ---
 
 ## 🚀 Usage
