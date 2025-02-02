@@ -31,7 +31,7 @@ A simple yet powerful password generator built in Python. This tool allows you t
 
 ## 🚀 Usage
 
-1. **Run the script using the command.**:
+1. **Run the script using the command**:
    ```bash
    python password.py
    ```
