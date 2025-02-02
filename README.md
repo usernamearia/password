@@ -35,7 +35,7 @@ A simple yet powerful password generator built in Python. This tool allows you t
    ```bash
    python password.py
    ```
-2. **Follow the prompts**
+2. **Follow the prompts.**
 3. **The generated password will be displayed in the terminal and automatically copied to your clipboard.**
 
 ---
