@@ -9,7 +9,7 @@ A simple yet powerful password generator built in Python. This tool allows you t
 - **Customizable Password Length**: Specify the length of the password.
 - **Include Numbers**: Option to include or exclude numbers in the password.
 - **Include Symbols**: Option to include or exclude special symbols in the password.
-- **Clipboard Support**: Automatically copies the generated password to your clipboard.
+- **Clipboard Support**: Automatically copies the generated password to your clipboard using 'pyperclip'.
 - **Colorful Terminal Output**: Uses `colorama` for colorful and user-friendly terminal output.
 - **ASCII Art Banner**: Displays a stylish ASCII art banner using `pyfiglet`.
 
