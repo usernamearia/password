@@ -2,9 +2,8 @@ import random
 import string
 import pyfiglet
 from colorama import Fore, Style, init
-import pyperclip  # Library for clipboard operations
+import pyperclip 
 
-# Initialize colorama for Windows compatibility
 init(autoreset=True)
 
 def generate_password(length=12, use_numbers=True, use_symbols=True):
@@ -46,33 +45,27 @@ def main():
     """Runs the interactive password generator."""
     print(Fore.CYAN + pyfiglet.figlet_format("Password Generator"))
 
-    # Get password length with validation
     length = int(get_user_input(
         Fore.YELLOW + "🔢 Enter password length: " + Fore.GREEN,
         validate_length
     ))
 
-    # Get whether to include numbers with validation
     use_numbers = get_user_input(
         Fore.YELLOW + "🔢 Include numbers? (yes/no): " + Fore.GREEN,
         validate_yes_no
     ) == "yes"
 
-    # Get whether to include symbols with validation
     use_symbols = get_user_input(
         Fore.YELLOW + "🔣 Include symbols? (yes/no): " + Fore.GREEN,
         validate_yes_no
     ) == "yes"
 
-    # Generate the password
     password = generate_password(length, use_numbers, use_symbols)
     
     if password:
-        # Display the password
         print(Fore.MAGENTA + "\n🎉 Generated Password: " + Fore.CYAN + Style.BRIGHT + password)
         print(Fore.LIGHTBLACK_EX + "⚠️ Remember to store your password securely!")
 
-        # Copy the password to the clipboard
         try:
             pyperclip.copy(password)
             print(Fore.GREEN + "📋 Password copied to clipboard!")
