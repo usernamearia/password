@@ -7,76 +7,82 @@ import pyperclip
 # Initialize colorama to automatically reset styles after each print
 init(autoreset=True)
 
-def generate_password(length=12, use_numbers=True, use_symbols=True):
-    # Define character sets for letters, numbers, and symbols
+# Minimum password length
+MIN_PASSWORD_LENGTH = 8
+
+def generate_password(length=16, use_numbers=True, use_symbols=True):
+    # Ensure the password is at least the minimum length
+    length = max(length, MIN_PASSWORD_LENGTH)
+
+    # Define character sets
     letters = string.ascii_letters
     numbers = string.digits if use_numbers else ""
     symbols = string.punctuation if use_symbols else ""
 
-    # Combine all selected character sets
-    all_chars = letters + numbers + symbols
-
-    # Check if no characters are selected
-    if not all_chars:
+    # Check if at least one character set is selected
+    if not any([letters, numbers, symbols]):
         print(Fore.RED + "Error: No characters selected for password generation.")
         return None
 
-    # Generate and return a random password
-    return ''.join(random.choice(all_chars) for _ in range(length))
+    # Ensure at least one number and one symbol if required
+    required_chars = []
+    if use_numbers:
+        required_chars.append(random.choice(numbers))
+    if use_symbols:
+        required_chars.append(random.choice(symbols))
+
+    # Fill the rest of the password length with a mix of characters
+    all_chars = letters + numbers + symbols
+    remaining_chars = [random.choice(all_chars) for _ in range(length - len(required_chars))]
+
+    # Combine required characters with the rest and shuffle for randomness
+    password_chars = required_chars + remaining_chars
+    random.shuffle(password_chars)
+
+    return ''.join(password_chars)
 
 def get_user_input(prompt, validation_func=None):
-    # Continuously prompt the user until valid input is provided
     while True:
         user_input = input(prompt).strip().lower()
-        # Validate input if a validation function is provided
         if validation_func and not validation_func(user_input):
             print(Fore.RED + "Invalid input. Please try again.")
             continue
         return user_input
 
 def validate_length(length):
-    # Validate that the input is a positive integer
     try:
         length = int(length)
-        return length > 0
+        return length >= MIN_PASSWORD_LENGTH  # Ensure minimum security length
     except ValueError:
         return False
 
 def validate_yes_no(response):
-    # Validate that the input is either "yes" or "no"
     return response in ["yes", "no"]
 
 def main():
-    # Display the program title in a stylized format
     print(Fore.CYAN + pyfiglet.figlet_format("Password Generator"))
 
-    # Prompt the user for the desired password length
     length = int(get_user_input(
-        Fore.YELLOW + "🔢 Enter password length: " + Fore.GREEN,
+        Fore.YELLOW + f"🔢 Enter password length (min {MIN_PASSWORD_LENGTH}): " + Fore.GREEN,
         validate_length
     ))
 
-    # Ask the user if they want to include numbers in the password
     use_numbers = get_user_input(
         Fore.YELLOW + "🔢 Include numbers? (yes/no): " + Fore.GREEN,
         validate_yes_no
     ) == "yes"
 
-    # Ask the user if they want to include symbols in the password
     use_symbols = get_user_input(
         Fore.YELLOW + "🔣 Include symbols? (yes/no): " + Fore.GREEN,
         validate_yes_no
     ) == "yes"
 
-    # Generate the password based on the user's preferences
     password = generate_password(length, use_numbers, use_symbols)
-    
+
     if password:
-        # Display the generated password
         print(Fore.MAGENTA + "\n🎉 Generated Password: " + Fore.CYAN + Style.BRIGHT + password)
         print(Fore.LIGHTBLACK_EX + "⚠️ Remember to store your password securely!")
 
-        # Attempt to copy the password to the clipboard
         try:
             pyperclip.copy(password)
             print(Fore.GREEN + "📋 Password copied to clipboard!")
@@ -84,5 +90,4 @@ def main():
             print(Fore.RED + "❌ Failed to copy password to clipboard. Error: " + str(e))
 
 if __name__ == "__main__":
-    # Run the main function when the script is executed
     main()
